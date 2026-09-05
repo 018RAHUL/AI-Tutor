@@ -1,0 +1,34 @@
+
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+
+# Testing & Caches
+.pytest_cache/
+.coverage
+htmlcov/
+.eslintcache
+
+# Archives & Builds
+dist/
+build/
+*.zip
+*.tar.gz
+
+# Environment variables & Local databases
+.env
+.env.local
+.env.*.local
+*.local
