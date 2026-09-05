@@ -63,11 +63,30 @@ class VideoRenderer:
         
         duration = max(5.0, duration_sec)
         clean_topic_slug = re.sub(r'[^a-zA-Z0-9_]', '', topic.lower().replace(' ', '_'))[:24]
-        out_filename = f"{scene_id}_{clean_topic_slug}.mp4"
+        # Include the audio identity in the video filename.
+        # This prevents an old silent video from being reused
+        # after successful TTS generation.
+        audio_identity = "silent"
+
+        if audio_path:
+            try:
+                audio_name = Path(audio_path).name
+                audio_identity = audio_name[:12]
+            except Exception:
+                audio_identity = "audio"
+
+        out_filename = (
+            f"{scene_id}_{clean_topic_slug}_{audio_identity}.mp4"
+        )
+
         out_path = VIDEO_DIR / out_filename
 
         if out_path.exists() and out_path.stat().st_size > 15000:
-            return {"video_path": str(out_path), "video_url": f"/api/media/video/{out_filename}", "cached": True}
+            return {
+                "video_path": str(out_path),
+                "video_url": f"/api/media/video/{out_filename}",
+                "cached": True
+            }
 
         # Full 1080p Studio Resolution for razor-sharp clarity
         width, height = 1920, 1080
