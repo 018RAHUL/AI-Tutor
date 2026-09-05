@@ -1,0 +1,43 @@
+# Frontend - DO NOT PUSH
+frontend/
+
+# VS Code Local History
+.history/
+
+# Backend generated/runtime files
+backend/storage/audio/
+backend/storage/rag_index.json
+
+# Environment/secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Generated files
+uploads/
+generated/
+output/
+tmp/
+temp/
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
