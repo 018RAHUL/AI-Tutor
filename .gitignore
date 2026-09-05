@@ -33,3 +33,10 @@ build/
 .env.local
 .env.*.local
 *.local
+
+# Generated/local files
+.history/
+backend/storage/audio/
+backend/storage/video/
+backend/storage/*.db
+
